@@ -115,7 +115,12 @@ app.get("/insurance",function(req,res){
     }
   });
   app.get("/bookTest",function(req,res){
-    res.render("bookTest");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("bookTest", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
   });
 
 // app.get("/auth/google", 
