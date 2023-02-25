@@ -74,6 +74,10 @@ app.get("/services",function(req,res){
   res.render("services");
 });
 
+app.get("/contactus",function(req,res){
+    res.render("contactus");
+  });
+
 // app.get("/auth/google", 
 //     passport.authenticate("google", { scope: ["profile"] })
 // );
