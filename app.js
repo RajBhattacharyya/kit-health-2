@@ -82,6 +82,10 @@ app.get("/contactus",function(req,res){
     res.render("contactus");
   });
 
+app.get("/insurance",function(req,res){
+    res.render("insurance");
+  });
+
 // app.get("/auth/google", 
 //     passport.authenticate("google", { scope: ["profile"] })
 // );

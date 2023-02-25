@@ -85,7 +85,7 @@ header{
 	right: 0;
 	border-radius: 10px;
 	width: 0;
-	background: #20247b;
+	background: #ffffff;
 	z-index: -1;
 	-moz-transition: ease all 0.35s;
 	-o-transition: ease all 0.35s;
@@ -96,10 +96,10 @@ header{
 	top: -5px;
   }
   .feature-box-1:hover h5 {
-	color: #ffffff;
+	color:  #20247b;
   }
   .feature-box-1:hover p {
-	color: rgba(255, 255, 255, 0.8);
+	color: #393d93;
   }
   .feature-box-1:hover:after {
 	width: 100%;
