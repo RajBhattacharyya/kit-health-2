@@ -66,24 +66,53 @@ passport.serializeUser(function(user, cb) {
 //     });
 //   }
 // ))
-
 app.get("/", function(req, res){
-    res.render("home");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("home", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("home", { loggedIn: loggedIn });
+    }
+    
 });
 app.get("/services",function(req,res){
-  res.render("services");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("services", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("services", { loggedIn: loggedIn });
+    }
 });
 app.get("/about",function(req,res){
-    res.render("about");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("about", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("about", { loggedIn: loggedIn });
+    }
   });
   
 
 app.get("/contactus",function(req,res){
-    res.render("contactus");
-  });
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("contactus", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("contactus", { loggedIn: loggedIn });
+    }
+});
 
 app.get("/insurance",function(req,res){
-    res.render("insurance");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("insurance", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
   });
   app.get("/bookTest",function(req,res){
     res.render("bookTest");
@@ -100,47 +129,12 @@ app.get("/insurance",function(req,res){
 //   });
 
 app.get("/login", function(req, res){
-    res.render("login");
+    const isAuthenticated = req.isAuthenticated()
+    res.render("login", isAuthenticated);
 });
 
 app.get("/register", function(req, res){
     res.render("register");
-});
-
-app.get("/home2", function(req, res){
-    User.find({"home2": {$ne: null}}, function(err, foundUser){
-        if (err) {
-            console.log(err)
-        } else {
-            if (foundUser) {
-                res.render("home2");
-            }
-        }
-    });
-});
-
-app.get("/submit", function(req, res){
-    if (req.isAuthenticated()) {
-        res.render("submit");
-    } else {
-        res.redirect("/login");
-    }
-});
-
-app.post("/submit", function(req, res){
-    const submittedSecret = req.body.secret;
-    User.findById(req.user.id, function(err, foundUser){
-        if (err) {
-            console.log(err);
-        } else {
-            if (foundUser) {
-                foundUser.secret = submittedSecret;
-                foundUser.save(function(){
-                    res.redirect("/home2");
-                });
-            }
-        }
-    });
 });
 
 app.get('/logout', function(req, res, next) {
@@ -159,7 +153,7 @@ app.post("/register", function(req, res){
             res.redirect("register");
         } else {
             passport.authenticate("local")(req, res, function(){
-                res.redirect("home2");
+                res.redirect("/");
             });
         }
     });
@@ -175,7 +169,7 @@ app.post("/login", function(req, res){
             console.log(err);
         } else {
             passport.authenticate("local")(req, res, function(){
-                res.redirect("home2");
+                res.redirect("/");
             });
         }
     });
