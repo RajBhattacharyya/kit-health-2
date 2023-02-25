@@ -94,6 +94,15 @@ app.get("/about",function(req,res){
         res.render("about", { loggedIn: loggedIn });
     }
   });
+  app.get("/emergency",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("emergency", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("emergency", { loggedIn: loggedIn });
+    }
+  });
   
 
 app.get("/contactus",function(req,res){
@@ -145,7 +154,8 @@ app.get("/insurance",function(req,res){
         const loggedIn = true;
         res.render("order", { loggedIn: loggedIn });
     } else {
-        res.redirect("login");
+        const loggedIn = false;
+        res.render("order", { loggedIn: loggedIn });
     }
   });  
 
