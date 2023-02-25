@@ -154,8 +154,8 @@ app.get("/insurance",function(req,res){
         const loggedIn = true;
         res.render("order", { loggedIn: loggedIn });
     } else {
-        const loggedIn = false;
-        res.render("order", { loggedIn: loggedIn });
+    
+        res.redirect("login");
     }
   });  
 
