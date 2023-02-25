@@ -54,7 +54,7 @@ passport.serializeUser(function(user, cb) {
     });
   });
 
-// passport.use(new GoogleStrategy({
+// passport.use(new GoogleStrategy({}
 //     clientID: process.env.CLIENT_ID,
 //     clientSecret: process.env.CLIENT_SECRET,
 //     callbackURL: "http://localhost:3000/auth/google/secrets",
@@ -92,6 +92,15 @@ app.get("/about",function(req,res){
     } else {
         const loggedIn = false;
         res.render("about", { loggedIn: loggedIn });
+    }
+  });
+  app.get("/emergency",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("emergency", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("emergency", { loggedIn: loggedIn });
     }
   });
   
@@ -145,6 +154,7 @@ app.get("/insurance",function(req,res){
         const loggedIn = true;
         res.render("order", { loggedIn: loggedIn });
     } else {
+    
         res.redirect("login");
     }
   });  
