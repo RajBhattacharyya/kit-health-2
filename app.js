@@ -114,6 +114,18 @@ app.get("/insurance",function(req,res){
         res.redirect("login");
     }
   });
+  app.get("/bookTest",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("bookTest", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
+  });
+
+  app.get("/order",function(req,res){
+    res.render("order");
+  });  
 
 // app.get("/auth/google", 
 //     passport.authenticate("google", { scope: ["profile"] })
