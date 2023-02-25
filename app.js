@@ -131,6 +131,15 @@ app.get("/insurance",function(req,res){
     }
   });
 
+  app.get("/medicalService",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("medicalService", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
+  });
+
   app.get("/order",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
