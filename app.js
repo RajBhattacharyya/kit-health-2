@@ -70,6 +70,9 @@ passport.serializeUser(function(user, cb) {
 app.get("/", function(req, res){
     res.render("home");
 });
+app.get("/services",function(req,res){
+  res.render("services");
+});
 
 // app.get("/auth/google", 
 //     passport.authenticate("google", { scope: ["profile"] })
