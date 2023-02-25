@@ -25,6 +25,9 @@ app.get("/register",function(req,res){
 app.get("/about",function(req,res){
   res.render("about");
 });
+app.get("/services",function(req,res){
+  res.render("services");
+});
 
 
 app.listen(3000, function() {
