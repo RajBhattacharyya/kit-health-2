@@ -122,6 +122,14 @@ app.get("/insurance",function(req,res){
         res.redirect("login");
     }
   });
+  app.get("/bookApp",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("bookApp", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
+  });
 
   app.get("/order",function(req,res){
     if (req.isAuthenticated()) {
