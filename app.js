@@ -8,6 +8,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 //const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -139,6 +140,34 @@ app.get("/contactus",function(req,res){
         res.render("contactus", { loggedIn: loggedIn });
     }
 });
+
+app.post('/send-email', (req, res) => {
+    const transporter = nodemailer.createTransport({
+      host: 'smtp-mail.outlook.com',
+      port: 587,
+      auth: {
+        user: 'rajbhattacharyya8110@outlook.com',
+        pass: 'Raj18110'
+      }
+    });
+  
+    const mailOptions = {
+      from: req.body.email,
+      to: 'rajbhattacharyya18110@gmail.com',
+      subject: req.body.name,
+      text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`
+    };
+  
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.redirect("contactus");
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.redirect('/');
+      }
+    });
+  });
 
 app.get("/insurance",function(req,res){
     if (req.isAuthenticated()) {
