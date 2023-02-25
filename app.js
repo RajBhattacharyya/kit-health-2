@@ -124,7 +124,12 @@ app.get("/insurance",function(req,res){
   });
 
   app.get("/order",function(req,res){
-    res.render("order");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("order", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
   });  
 
 // app.get("/auth/google", 
