@@ -54,7 +54,7 @@ passport.serializeUser(function(user, cb) {
     });
   });
 
-// passport.use(new GoogleStrategy({
+// passport.use(new GoogleStrategy({}
 //     clientID: process.env.CLIENT_ID,
 //     clientSecret: process.env.CLIENT_SECRET,
 //     callbackURL: "http://localhost:3000/auth/google/secrets",
@@ -92,6 +92,40 @@ app.get("/about",function(req,res){
     } else {
         const loggedIn = false;
         res.render("about", { loggedIn: loggedIn });
+    }  
+  });  
+
+
+app.get("/confirm",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("confirm", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("confirm", { loggedIn: loggedIn });
+    }
+    });  
+
+    app.get("/confirm2",function(req,res){
+        if (req.isAuthenticated()) {
+            const loggedIn = true;
+            res.render("confirm2", { loggedIn: loggedIn });
+        } else {
+            const loggedIn = false;
+            res.render("confirm2", { loggedIn: loggedIn });
+        }
+        });  
+
+
+
+
+  app.get("/emergency",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("emergency", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("emergency", { loggedIn: loggedIn });
     }
   });
   
@@ -122,12 +156,30 @@ app.get("/insurance",function(req,res){
         res.redirect("login");
     }
   });
+  app.get("/bookApp",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("bookApp", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
+  });
+
+  app.get("/medicalService",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("medicalService", { loggedIn: loggedIn });
+    } else {
+        res.redirect("login");
+    }
+  });
 
   app.get("/order",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
         res.render("order", { loggedIn: loggedIn });
     } else {
+    
         res.redirect("login");
     }
   });  

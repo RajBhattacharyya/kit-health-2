@@ -38,9 +38,9 @@
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
+              <a href="/emergency" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
-                Your Profile
+                Emergency
               </a>
             </li>
             <li>
@@ -61,10 +61,10 @@
 
         <div class="text-end">
           <% if (loggedIn) { %>
-            <button type="button"class="btn btn-light text-dark me-2"><a href="/logout">logout</a></button>
+            <button type="button"class="btn btn-light text-dark me-2"><a href="/logout" style="text-decoration: none; color:black">logout</a></button>
           <% } else { %>
-            <button type="button"class="btn btn-light text-dark me-2"><a href="/login">Login</a></button>
-            <button type="button" class="btn btn-light"><a href="/register">Sign-up</a></button>
+            <button type="button"class="btn btn-light text-dark me-2"><a href="/login" style="text-decoration: none; color:black">Login</a></button>
+            <button type="button" class="btn btn-light"><a href="/register" style="text-decoration: none; color:black">Sign-up</a></button>
           <% } %>
         </div>
       </div>
