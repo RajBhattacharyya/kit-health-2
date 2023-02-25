@@ -66,9 +66,15 @@ passport.serializeUser(function(user, cb) {
 //     });
 //   }
 // ))
-
 app.get("/", function(req, res){
-    res.render("home");
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("home", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("home", { loggedIn: loggedIn });
+    }
+    
 });
 app.get("/services",function(req,res){
   res.render("services");
@@ -85,7 +91,8 @@ app.get("/services",function(req,res){
 //   });
 
 app.get("/login", function(req, res){
-    res.render("login");
+    const isAuthenticated = req.isAuthenticated()
+    res.render("login", isAuthenticated);
 });
 
 app.get("/register", function(req, res){
