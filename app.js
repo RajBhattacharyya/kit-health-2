@@ -117,7 +117,15 @@ app.get("/confirm",function(req,res){
         });  
 
 
-
+        app.get("/goHealth",function(req,res){
+            if (req.isAuthenticated()) {
+                const loggedIn = true;
+                res.render("goHealth", { loggedIn: loggedIn });
+            } else {
+                const loggedIn = false;
+                res.render("goHealth", { loggedIn: loggedIn });
+            }
+            });
 
   app.get("/emergency",function(req,res){
     if (req.isAuthenticated()) {
