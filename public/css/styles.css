@@ -546,39 +546,7 @@ body{background-color:#eee;}
   color: #FFF;
   text-decoration:none;
 }
-.book, select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.book-form {
-  width: 100%;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  padding: 14px 20px;
-  margin: auto;
-  width:100px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display:flex;
-  display:grid;
-}
-
-.book-form:hover {
-  background-color: #2baeb8;
-}
-
-.book-div {
-  border-radius: 5px;
-  background-color: #ebefef;
-  padding: 20px;
-}
+body{color: #000;overflow-x: hidden;height: 100%;background-image: url("https://i.imgur.com/GMmCQHC.png");background-repeat: no-repeat;background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;border: 1px solid #00BCD4;outline-width: 0;font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;font-weight: 400;height: 43px;cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;outline-width: 0}
 
 
 
