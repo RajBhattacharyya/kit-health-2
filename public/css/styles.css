@@ -559,3 +559,9 @@ body{background-color:#eee;}
 
 }
 
+
+select.form-select-2 {
+  outline-offset: 1px solid rgb(56, 53, 53);
+       /*it is for go heatlh drop down*/
+}
+
