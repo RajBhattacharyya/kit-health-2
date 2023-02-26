@@ -89,10 +89,10 @@ app.get("/services",function(req,res){
 app.get("/about",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
-        res.render("about", { loggedIn: loggedIn });
+        res.render("paymentgate", { loggedIn: loggedIn });
     } else {
         const loggedIn = false;
-        res.render("about", { loggedIn: loggedIn });
+        res.render("paymentgate", { loggedIn: loggedIn });
     }  
   });  
 
