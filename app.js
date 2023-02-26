@@ -25,7 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(`process.env.DB`);
+mongoose.connect(process.env.DB);
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -59,8 +59,8 @@ passport.serializeUser(function(user, cb) {
   });
 
   passport.use(new GoogleStrategy({
-    clientID: `process.env.CLIENT_ID`,
-    clientSecret: `process.env.CLIENT_SECRET`,
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/kithealth",
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -166,8 +166,8 @@ app.post('/send-email', (req, res) => {
       host: 'smtp-mail.outlook.com',
       port: 587,
       auth: {
-        user: `process.env.MAIL_USER`,
-        pass: `process.env.MAIL_PASS`
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
       }
     });
   
