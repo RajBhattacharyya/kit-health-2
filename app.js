@@ -119,7 +119,7 @@ app.post("/confirm",function(req,res){
     }
     });  
 
-    app.get("/confirm2",function(req,res){
+    app.post("/confirm2",function(req,res){
         if (req.isAuthenticated()) {
             const loggedIn = true;
             res.render("confirm2", { loggedIn: loggedIn });
@@ -237,7 +237,6 @@ app.get("/insurance",function(req,res){
 
 app.get("/login", function(req, res){
     const isAuthenticated = req.isAuthenticated();
-    console.log(isAuthenticated);
     res.render("login", isAuthenticated);
 });
 
