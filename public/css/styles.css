@@ -8,14 +8,14 @@
 	bottom: 0;
 	width: 100%;
 	height: 60px;
-	background-color: #8fbddc;
+	background-color: #0de3dc;
 }
 header{
-    background-color: #786eec;
+    background-color: #554dad;
 }
 
 .top-bar{
-    background-color: #0ad7d7;
+    background-color: #0ed3ed;
 }
 
 #bg-video {
@@ -28,6 +28,10 @@ header{
 	z-index: -1;
   margin-top: 0%;
   }
+  
+
+  
+  
   
 
 
