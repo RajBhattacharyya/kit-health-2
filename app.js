@@ -62,7 +62,7 @@ passport.serializeUser(function(user, cb) {
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ username: profile.displayName }, function (err, user) {
       return cb(err, user);
     });
   }
