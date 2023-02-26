@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-//const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const nodemailer = require('nodemailer');
 
@@ -34,10 +34,12 @@ const userSchema = new mongoose.Schema({
     secret: String
 });
 
+
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+
 
 passport.use(User.createStrategy());
 
@@ -55,18 +57,27 @@ passport.serializeUser(function(user, cb) {
     });
   });
 
-// passport.use(new GoogleStrategy({}
-//     clientID: process.env.CLIENT_ID,
-//     clientSecret: process.env.CLIENT_SECRET,
-//     callbackURL: "http://localhost:3000/auth/google/secrets",
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     console.log(profile);
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ))
+  passport.use(new GoogleStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/kithealth",
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
+    User.findOrCreate({ username: profile.displayName }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+))
+app.get("/auth/google", 
+     passport.authenticate("google", { scope: ["profile"] })
+);
+
+app.get("/auth/google/kithealth", 
+  passport.authenticate('google', { failureRedirect: "/login" }),
+  function(req, res) {
+    res.redirect("/");
+  });
 app.get("/", function(req, res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
@@ -220,16 +231,6 @@ app.get("/insurance",function(req,res){
         res.redirect("login");
     }
   });  
-
-// app.get("/auth/google", 
-//     passport.authenticate("google", { scope: ["profile"] })
-// );
-
-// app.get("/auth/google/secrets", 
-//   passport.authenticate('google', { failureRedirect: "/login" }),
-//   function(req, res) {
-//     res.redirect("/secrets");
-//   });
 
 app.get("/login", function(req, res){
     const isAuthenticated = req.isAuthenticated()
