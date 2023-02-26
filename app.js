@@ -31,8 +31,9 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     googleId: String,
-    secret: String
+    secret: String,
 });
+
 
 
 userSchema.plugin(passportLocalMongoose);
@@ -108,7 +109,7 @@ app.get("/about",function(req,res){
   });  
 
 
-app.get("/confirm",function(req,res){
+app.post("/confirm",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
         res.render("confirm", { loggedIn: loggedIn });
@@ -118,7 +119,7 @@ app.get("/confirm",function(req,res){
     }
     });  
 
-    app.get("/confirm2",function(req,res){
+    app.post("/confirm2",function(req,res){
         if (req.isAuthenticated()) {
             const loggedIn = true;
             res.render("confirm2", { loggedIn: loggedIn });
@@ -187,6 +188,8 @@ app.post('/send-email', (req, res) => {
       }
     });
   });
+
+
 
 app.get("/insurance",function(req,res){
     if (req.isAuthenticated()) {
@@ -262,6 +265,8 @@ app.post("/register", function(req, res){
         }
     });
 });
+
+
 
 app.post("/login", function(req, res){
     const user = new User({
