@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node index.js",
+    "dev": "env-cmd node --watch index.js"
   },
   "author": "",
   "license": "ISC",
