@@ -100,10 +100,10 @@ app.get("/services",function(req,res){
 app.get("/about",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
-        res.render("paymentgate", { loggedIn: loggedIn });
+        res.render("about", { loggedIn: loggedIn });
     } else {
         const loggedIn = false;
-        res.render("paymentgate", { loggedIn: loggedIn });
+        res.render("about", { loggedIn: loggedIn });
     }  
   });  
 
