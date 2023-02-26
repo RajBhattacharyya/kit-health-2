@@ -26,6 +26,7 @@ header{
 	height: 100%;
 	object-fit: cover;
 	z-index: -1;
+  margin-top: 0%;
   }
 
 
@@ -557,5 +558,11 @@ body{background-color:#eee;}
 .hover-zoom:hover{
   transform: scale(1.2);
 
+}
+
+
+select.form-select-2 {
+  outline-offset: 1px solid rgb(56, 53, 53);
+       /*it is for go heatlh drop down*/
 }
 
