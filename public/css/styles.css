@@ -11,11 +11,11 @@
 	background-color: #8fbddc;
 }
 header{
-    background-color: #cfeed1;
+    background-color: #786eec;
 }
 
 .top-bar{
-    background-color: #8fbddc;
+    background-color: #0ad7d7;
 }
 
 #bg-video {
@@ -27,6 +27,7 @@ header{
 	object-fit: cover;
 	z-index: -1;
   }
+  
 
 
   body{margin-top:20px;}
