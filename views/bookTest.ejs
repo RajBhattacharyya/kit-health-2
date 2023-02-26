@@ -17,7 +17,7 @@
                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> <input type="text" id="mob" name="mob" placeholder="" onblur="validate(4)"> </div>
                   </div>
                   <div class="row justify-content-between text-left">
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Age<span class="text-danger"> *</span></label> <input type="text" id="age" name="age" placeholder="" onblur="validate(5)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Pin code<span class="text-danger"> *</span></label> <input type="text" id="pin" name="pin" placeholder="" onblur="validate(5)"> </div>
                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Birth-Date *</span><input type="date" id="birthday" name="birthday"> </div>
                   </div>
                  
@@ -25,9 +25,19 @@
                   <div class="row justify-content-between text-left">
                       <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Full Adress<span class="text-danger"> *</span></label> <input type="text" id="ads" name="ads" placeholder="" onblur="validate(6)"> </div>
                   </div>
-                  <div class="row justify-content-between text-left">
-                    <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Test you want to book<span class="text-danger"> *</span></label> <input type="text" id="test" name="test" placeholder="" onblur="validate(7)"> </div>
-                </div>
+                  <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3">Test you want <span class="text-danger"> *</span></label>
+                  <select
+                          class="form-group col-12 flex-column d-flex"
+                          
+                        >
+                          <option selected>Select the test you want</option>
+      
+                          <option value="1">Total blood test</option>
+                          <option value="2">Liver function test</option>
+                          <option value="3">Thyroid test</option>
+                          <option value="4">Diabetese test</option>
+                          <option value="5">Uria test</option>
+                        </select>
                   
                   <div class="row justify-content-end">
                       <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary"><a role="button" href="/confirm" style="text-decoration: none; color:black">Submit</a></button> </div>
