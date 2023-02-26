@@ -25,7 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb+srv://Raj:Raj18110@cluster0.y9rbp48.mongodb.net/userDB?retryWrites=true&w=majority');
+mongoose.connect(process.env.DB);
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -154,8 +154,8 @@ app.post('/send-email', (req, res) => {
       host: 'smtp-mail.outlook.com',
       port: 587,
       auth: {
-        user: 'rajbhattacharyya8110@outlook.com',
-        pass: 'Raj18110'
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
       }
     });
   
