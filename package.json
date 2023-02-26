@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node App.js",
     "dev": "env-cmd node --watch index.js"
   },
   "author": "",
