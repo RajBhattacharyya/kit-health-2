@@ -18,7 +18,10 @@
     "lodash": "^4.17.21",
     "mongoose": "^6.10.0",
     "mongoose-findorcreate": "^3.0.0",
+    "multiparty": "^4.2.3",
+    "nodemailer": "^6.9.1",
     "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2"
   },

@@ -6,8 +6,9 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-//const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb+srv://Raj:Raj18110@cluster0.y9rbp48.mongodb.net/userDB?retryWrites=true&w=majority');
+mongoose.connect(process.env.DB);
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -54,18 +55,27 @@ passport.serializeUser(function(user, cb) {
     });
   });
 
-// passport.use(new GoogleStrategy({}
-//     clientID: process.env.CLIENT_ID,
-//     clientSecret: process.env.CLIENT_SECRET,
-//     callbackURL: "http://localhost:3000/auth/google/secrets",
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     console.log(profile);
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ))
+  passport.use(new GoogleStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/kithealth",
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+))
+app.get("/auth/google", 
+     passport.authenticate("google", { scope: ["profile"] })
+);
+
+app.get("/auth/google/kithealth", 
+  passport.authenticate('google', { failureRedirect: "/login" }),
+  function(req, res) {
+    res.redirect("/");
+  });
 app.get("/", function(req, res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
@@ -92,8 +102,41 @@ app.get("/about",function(req,res){
     } else {
         const loggedIn = false;
         res.render("about", { loggedIn: loggedIn });
+    }  
+  });  
+
+
+app.get("/confirm",function(req,res){
+    if (req.isAuthenticated()) {
+        const loggedIn = true;
+        res.render("confirm", { loggedIn: loggedIn });
+    } else {
+        const loggedIn = false;
+        res.render("confirm", { loggedIn: loggedIn });
     }
-  });
+    });  
+
+    app.get("/confirm2",function(req,res){
+        if (req.isAuthenticated()) {
+            const loggedIn = true;
+            res.render("confirm2", { loggedIn: loggedIn });
+        } else {
+            const loggedIn = false;
+            res.render("confirm2", { loggedIn: loggedIn });
+        }
+        });  
+
+
+        app.get("/goHealth",function(req,res){
+            if (req.isAuthenticated()) {
+                const loggedIn = true;
+                res.render("goHealth", { loggedIn: loggedIn });
+            } else {
+                const loggedIn = false;
+                res.render("goHealth", { loggedIn: loggedIn });
+            }
+            });
+
   app.get("/emergency",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
@@ -114,6 +157,34 @@ app.get("/contactus",function(req,res){
         res.render("contactus", { loggedIn: loggedIn });
     }
 });
+
+app.post('/send-email', (req, res) => {
+    const transporter = nodemailer.createTransport({
+      host: 'smtp-mail.outlook.com',
+      port: 587,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+      }
+    });
+  
+    const mailOptions = {
+      from: req.body.email,
+      to: 'rajbhattacharyya18110@gmail.com',
+      subject: req.body.name,
+      text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`
+    };
+  
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.redirect("contactus");
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.redirect('/');
+      }
+    });
+  });
 
 app.get("/insurance",function(req,res){
     if (req.isAuthenticated()) {
@@ -158,16 +229,6 @@ app.get("/insurance",function(req,res){
         res.redirect("login");
     }
   });  
-
-// app.get("/auth/google", 
-//     passport.authenticate("google", { scope: ["profile"] })
-// );
-
-// app.get("/auth/google/secrets", 
-//   passport.authenticate('google', { failureRedirect: "/login" }),
-//   function(req, res) {
-//     res.redirect("/secrets");
-//   });
 
 app.get("/login", function(req, res){
     const isAuthenticated = req.isAuthenticated()

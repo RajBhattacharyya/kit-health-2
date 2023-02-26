@@ -1,0 +1,77 @@
+<%- include("partials/header"); -%>
+
+<div class="container-fluid px-1 py-5 mx-auto order">
+  <div class="row d-flex justify-content-center">
+      <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <h3>Welcome to KIT-Protect</h3>
+          <p class="blue-text"></p>
+          <div class="card">
+              <h5 class="text-center mb-4">Let's go one step closer to protect your family.</h5>
+              <form class="form-card" onsubmit="event.preventDefault()">
+                  <div class="row justify-content-between text-left">
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Name<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="Enter your name" onblur="validate(1)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="Enter your email" onblur="validate(2)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Address(No. Street)<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder="Enter your address" onblur="validate(3)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Zipcode <span class="text-danger"> *</span></label> <input type="text" id="zipcode" name="zipcode" placeholder="Enter your zipcode" onblur="validate(4)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Phone Number<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="Enter your Number" onblur="validate(5)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3">Your State <span class="text-danger"> *</span></label>
+                        <select
+                          class="form-select-2"
+                          aria-label="Default select example"
+                        >
+                          <option selected>Select One</option>
+      
+                          <option value="1">Andhra Pradesh</option>
+                          <option value="2">Arunachal Pradesh</option>
+                          <option value="3">Assam</option>
+                          <option value="4">Bihar</option>
+                          <option value="5">Chhattisgarh</option>
+                          <option value="6">Goa</option>
+                          <option value="7">Gujarat</option>
+                          <option value="8">Haryana</option>
+                          <option value="9">Himachal Pradesh</option>
+                          <option value="10">Jammu and Kashmir</option>
+                          <option value="11">Jharkhand</option>
+                          <option value="12">Karnataka</option>
+                          <option value="13">Kerala</option>
+                          <option value="14">Madhya Pradesh</option>
+                          <option value="15">Maharashtra</option>
+                          <option value="16">Manipur</option>
+                          <option value="17">Meghalaya</option>
+                          <option value="18">Mizoram</option>
+                          <option value="19">Nagaland</option>
+                          <option value="20">Odisha</option>
+                          <option value="21">Punjab</option>
+                          <option value="22">Rajasthan</option>
+                          <option value="23">Sikkim</option>
+                          <option value="24">Tamil Nadu</option>
+                          <option value="25">Telangana</option>
+                          <option value="26">Tripura</option>
+                          <option value="27">Uttar Pradesh</option>
+                          <option value="28">West Bengal</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Birth-Date <input type="date" id="birthday" name="birthday"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your Sex <span class="text-danger"> *</span></label>
+                    <select
+                          class="form-select-2"
+                          aria-label="Default select example"
+                        >
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        <option value="2">Others</option>
+                        </select>
+                        
+
+                         </div>
+                      
+
+                  
+                  <div class="row justify-content-end">
+                    <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary"><a role="button" href="/confirm" style="text-decoration: none; color:black">Submit</a></button> </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

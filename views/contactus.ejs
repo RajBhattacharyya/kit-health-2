@@ -12,11 +12,12 @@
                 <p class="mb-4 text-muted">We are always ready to serve</p>
               </div>
 
-              <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+              <form id="contact-form" method="post" action="/send-email" data-sb-form-api-token="API_TOKEN">
                 <!-- Name Input -->
                 <div class="form-floating mb-3">
                   <input
                     class="form-control"
+                    name="name"
                     id="name"
                     type="text"
                     placeholder="Name"
@@ -37,10 +38,11 @@
                     class="form-control"
                     id="emailAddress"
                     type="email"
-                    placeholder="Email Address"
+                    name="email"
+                    placeholder="abc@outlook.com"
                     data-sb-validations="required,email"
                   />
-                  <label for="emailAddress">Email Address</label>
+                  <label for="email">Outlook Email Address</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="emailAddress:required"
@@ -105,6 +107,7 @@
                     class="form-control"
                     id="message"
                     type="text"
+                    name="message"
                     placeholder="Message"
                     style="height: 10rem"
                     data-sb-validations="required"
@@ -117,29 +120,10 @@
                     Message is required.
                   </div>
                 </div>
-
-                <!-- Submit success message -->
-                <div class="d-none" id="submitSuccessMessage">
-                  <div class="text-center mb-3">
-                    <div class="fw-bolder">Form submission successful!</div>
-                    <p>To activate this form, sign up at</p>
-                    <a href="https://startbootstrap.com/solution/contact-forms"
-                      >https://startbootstrap.com/solution/contact-forms</a
-                    >
-                  </div>
-                </div>
-
-                <!-- Submit error message -->
-                <div class="d-none" id="submitErrorMessage">
-                  <div class="text-center text-danger mb-3">
-                    Error sending message!
-                  </div>
-                </div>
-
                 <!-- Submit button -->
                 <div class="d-grid">
                   <button
-                    class="btn btn-primary btn-lg disabled"
+                    class="btn btn-primary btn-lg"
                     id="submitButton"
                     type="submit"
                   >
