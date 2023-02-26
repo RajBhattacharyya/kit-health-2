@@ -8,6 +8,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 //const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb+srv://Raj:Raj18110@cluster0.y9rbp48.mongodb.net/userDB?retryWrites=true&w=majority');
+mongoose.connect(process.env.DB);
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -106,9 +107,26 @@ app.get("/confirm",function(req,res){
     }
     });  
 
+    app.get("/confirm2",function(req,res){
+        if (req.isAuthenticated()) {
+            const loggedIn = true;
+            res.render("confirm2", { loggedIn: loggedIn });
+        } else {
+            const loggedIn = false;
+            res.render("confirm2", { loggedIn: loggedIn });
+        }
+        });  
 
 
-
+        app.get("/goHealth",function(req,res){
+            if (req.isAuthenticated()) {
+                const loggedIn = true;
+                res.render("goHealth", { loggedIn: loggedIn });
+            } else {
+                const loggedIn = false;
+                res.render("goHealth", { loggedIn: loggedIn });
+            }
+            });
 
   app.get("/emergency",function(req,res){
     if (req.isAuthenticated()) {
@@ -130,6 +148,34 @@ app.get("/contactus",function(req,res){
         res.render("contactus", { loggedIn: loggedIn });
     }
 });
+
+app.post('/send-email', (req, res) => {
+    const transporter = nodemailer.createTransport({
+      host: 'smtp-mail.outlook.com',
+      port: 587,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+      }
+    });
+  
+    const mailOptions = {
+      from: req.body.email,
+      to: 'rajbhattacharyya18110@gmail.com',
+      subject: req.body.name,
+      text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`
+    };
+  
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.redirect("contactus");
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.redirect('/');
+      }
+    });
+  });
 
 app.get("/insurance",function(req,res){
     if (req.isAuthenticated()) {
