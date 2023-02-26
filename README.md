@@ -112,7 +112,7 @@ Install dependencies
 Start the server
 
 ```bash
-  node app.js
+  npm run start
 ```
 
 
