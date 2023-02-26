@@ -236,7 +236,8 @@ app.get("/insurance",function(req,res){
   });  
 
 app.get("/login", function(req, res){
-    const isAuthenticated = req.isAuthenticated()
+    const isAuthenticated = req.isAuthenticated();
+    console.log(isAuthenticated);
     res.render("login", isAuthenticated);
 });
 
@@ -268,21 +269,26 @@ app.post("/register", function(req, res){
 
 
 
-app.post("/login", function(req, res){
-    const user = new User({
-        username: req.body.username,
-        passport: req.body.password
+// app.post("/login", function(req, res){
+//     const user = new User({
+//         username: req.body.username,
+//         passport: req.body.password
+//     });
+//     req.login(user, function(err){
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             passport.authenticate("local")(req, res, function(){
+//                 res.redirect("/");
+//             });
+//         }
+//     });
+// });
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+    }), function (req, res) {
     });
-    req.login(user, function(err){
-        if (err) {
-            console.log(err);
-        } else {
-            passport.authenticate("local")(req, res, function(){
-                res.redirect("/");
-            });
-        }
-    });
-});
 
 app.listen(3000, function() {
     console.log("Server started on port 3000");
