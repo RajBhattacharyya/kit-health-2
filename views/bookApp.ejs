@@ -7,7 +7,7 @@
           <p class="blue-text"></p>
           <div class="card">
               <h5 class="text-center mb-4">Please fill up the acurate details</h5>
-              <form class="form-card" onsubmit="event.preventDefault()">
+              <form class="form-card" action="/confirm" method="post">
                   <div class="row justify-content-between text-left">
                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your name<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="Enter your name" onblur="validate(1)"> </div>
                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Your locality<span class="text-danger"> *</span></label> <input type="text" id="locality" name="locality" placeholder="Enter your locality" onblur="validate(2)"> </div>
@@ -23,12 +23,25 @@
                   <div class="row justify-content-between text-left">
                       <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Your symptoms<span class="text-danger"> *</span></label> <input type="text" id="sym" name="sym" placeholder="symmptoms in brief" onblur="validate(6)"> </div>
                   </div>
-                  <div class="row justify-content-between text-left">
-                    <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Specialist you want<span class="text-danger"> *</span></label> <input type="text" id="sp" name="sp" placeholder="Specialist doctor you want" onblur="validate(7)"> </div>
-                </div>
+                  <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3">Specialist you want to visit <span class="text-danger"> *</span></label>
+                    <select
+                            class="form-group col-12 flex-column d-flex"
+                            
+                          >
+                            <option selected>Select doctor</option>
+        
+                            <option value="1">Medicine</option>
+                            <option value="2">Gynocologist</option>
+                            <option value="3">Diabetese Specialist</option>
+                            <option value="4">Cardiologist</option>
+                            <option value="5">Dermatologist</option>
+                            <option value="6">Orthopedic</option>
+                            <option value="7">Pediatrics</option>
+                            <option value="8">Homeopathy</option>
+                          </select>
                   
                   <div class="row justify-content-end">
-                    <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary"><a role="button" href="/confirm" style="text-decoration: none; color:black">Submit</a></button> </div>
+                    <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Submit</button> </div>
                   </div>
               </form>
           </div>

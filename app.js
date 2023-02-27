@@ -31,13 +31,16 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     googleId: String,
-    secret: String
+    secret: String,
 });
+
+
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+
 
 passport.use(User.createStrategy());
 
@@ -62,7 +65,7 @@ passport.serializeUser(function(user, cb) {
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ username: profile.displayName }, function (err, user) {
       return cb(err, user);
     });
   }
@@ -106,7 +109,7 @@ app.get("/about",function(req,res){
   });  
 
 
-app.get("/confirm",function(req,res){
+app.post("/confirm",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
         res.render("confirm", { loggedIn: loggedIn });
@@ -186,6 +189,8 @@ app.post('/send-email', (req, res) => {
     });
   });
 
+
+
 app.get("/insurance",function(req,res){
     if (req.isAuthenticated()) {
         const loggedIn = true;
@@ -260,6 +265,8 @@ app.post("/register", function(req, res){
         }
     });
 });
+
+
 
 app.post("/login", function(req, res){
     const user = new User({
