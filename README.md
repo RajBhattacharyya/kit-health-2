@@ -34,15 +34,7 @@ Any additional information goes here
 
 ## Badges
 
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/RajBhattacharyya/kit-health-2/blob/master/license)
-
-
-
-## Demo
-
-Insert gif or link to demo
 
 
 ## Environment Variables
@@ -86,7 +78,7 @@ What did you learn while building this project? What challenges did you face and
 
 ## Support
 
-For support, email mrinmaydas2604@gmail.com.
+For support, email rajbhattacharyya18110@gmail.com.
 
 
 ## Run Locally
@@ -128,7 +120,7 @@ Start the server
 ## Deployment
 
 Our app is deployed at
-https://kit-health.cyclic.app/
+https://ruby-joyous-cobra.cyclic.app/
 
 
 ## Screenshots
