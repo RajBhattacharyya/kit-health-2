@@ -34,8 +34,6 @@ Any additional information goes here
 
 ## Badges
 
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/RajBhattacharyya/kit-health-2/blob/master/license)
 
 
