@@ -61,7 +61,7 @@ passport.serializeUser(function(user, cb) {
   passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/kithealth",
+    callbackURL: "https://ruby-joyous-cobra.cyclic.app/auth/google",
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
