@@ -125,7 +125,7 @@ https://ruby-joyous-cobra.cyclic.app/
 
 ## Screenshots
 
-![screencapture-localhost-3000-2023-02-26-20_20_21](https://user-images.githubusercontent.com/89240074/224756506-d59bf0cd-3d0b-496f-ac99-8de4b08ca938.png)
+![kitt](https://user-images.githubusercontent.com/89240074/224763059-c015cb89-3410-4728-88cb-9e143fb27bdd.gif)
 
 ![screencapture2-localhost-3000-about-2023-02-26-20_21_00](https://user-images.githubusercontent.com/89240074/224756590-8bdc043a-65fe-41c5-925b-28e88b3fee7b.png)
 
